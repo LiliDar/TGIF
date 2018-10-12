@@ -1,0 +1,71 @@
+.background {
+    background-color: gainsboro
+}
+
+.img-branches {
+    width: 20%;
+    position: relative;
+    float: left;
+}
+
+h1 {
+    float: left;
+    margin-top: 8%;
+    margin-left: 4%;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+h2 {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+h3 {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+p {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+nav {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.home {
+    padding: 3%;
+    margin-top: 13%;
+}
+
+.senators {
+    padding: 3%;
+    margin-top: 13%;
+}
+
+.congressmen {
+    padding: 3%;
+    margin-top: 13%;
+}
+
+form {
+    font-family: 'Didact Gothic', sans-serif;
+    display: flex;
+    align-content: space-between;
+}
+
+.footer-note {
+    margin-top: 1.2%;
+    color: grey;
+}
+
+.jumbotron {
+    background-color: slategrey;
+}
+
+table {
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.drpdwn-button {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
