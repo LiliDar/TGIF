@@ -112,6 +112,9 @@ function myStates() {
         option.innerHTML = array[i];
         dropdown.appendChild(option);
     }
-
 }
 myStates();
+
+
+
+

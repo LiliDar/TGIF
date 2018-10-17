@@ -1,5 +1,7 @@
 .background {
-    background-color: gainsboro
+    background-color: gainsboro;
+    width: 100%;
+    height: 100%;
 }
 
 .img-branches {
@@ -27,29 +29,57 @@ p {
     font-family: 'Didact Gothic', sans-serif;
 }
 
-nav {
-    font-family: 'Nanum Gothic', sans-serif;
+.home-paragraph {
+    display: inline-block;
+    position: relative;
+    margin-left: 5.4%;
+    margin-top: 3%;
+    padding-right: 42%;
 }
 
-.home {
-    padding: 3%;
-    margin-top: 13%;
+.senators-paragraph {
+    display: inline-block;
+    position: relative;
+    margin-left: 5.4%;
+    margin-top: 3%;
+    padding-right: 42%;
+    padding-bottom: 2%;
 }
 
-.senators {
-    padding: 3%;
-    margin-top: 13%;
+.congressmen-paragraph {
+    display: inline-block;
+    position: relative;
+    margin-left: 5.4%;
+    margin-top: 3%;
+    padding-right: 42%;
+    padding-bottom: 2%;
 }
 
-.congressmen {
-    padding: 3%;
-    margin-top: 13%;
+.attendance-paragraph {
+    display: inline-block;
+    position: relative;
+    margin-left: 5.4%;
+    margin-top: 3%;
+    padding-right: 42%;
+    padding-bottom: 2%;
+}
+
+.loyalty-paragraph {
+    display: inline-block;
+    position: relative;
+    margin-left: 5.4%;
+    margin-top: 3%;
+    padding-right: 42%;
+    padding-bottom: 2%;
 }
 
 form {
     font-family: 'Didact Gothic', sans-serif;
     display: flex;
-    align-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: -2.7%
+    
 }
 
 .footer-note {
@@ -67,5 +97,33 @@ table {
 
 .drpdwn-button {
     font-family: 'Didact Gothic', sans-serif;
+}
+
+.navigation {
+    display: inline-block;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.homepage-img {
+    width: 30%;
+    display: inline-block;
+    position: absolute;
+    margin-top: 20%;
+    margin-left: -35%
+}
+
+#accordion {
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.second-paragraph {
+    margin-left: -4%;
+}
+
+.drpdwn-button {
+    margin-left: 85%;
 }
 
