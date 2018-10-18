@@ -2,193 +2,215 @@
 var membersArray = data.results[0].members;
 
 
+
 //Statistics//
 var statistics = {
 
     //Number of Democrats, Republicans and Independents//
-    "numberDemocrat": 0,
-    "numberRepublican": 0,
-    "numberIndependent": 0,
+    "numberDemocrat": stateNumber('D'),
+    "numberRepublican": stateNumber('R'),
+    "numberIndependent": stateNumber('I'),
+    "Total": stateNumber('D') + stateNumber('R') + stateNumber('I'),
 
     // Democrats and Republicans compare, on average, for voting with their party//
-    "averageDemocrat": 0,
-    "averageRepublican": 0,
-    "averageIndependent": 0,
+    "averageDemocrat": Math.round(averageVotes('D') / stateNumber('D')),
+    "averageRepublican": Math.round(averageVotes('R') / stateNumber('R')),
+    "averageIndependent": Math.round(averageVotes('I') / stateNumber('I')),
 
     //Members which missed the most votes//
-    "mostMissedVotes": 0,
+    "mostMissedVotes": descendingArray('missed_votes'),
 
     //Members which missed the least votes//
-    "leastMissedVotes": 0,
+    "leastMissedVotes": ascendingArray('missed_votes'),
 
     //Members most often do not vote with their party//
-    "VoteLeastDemocrat": 0,
-    "VoteLeastRepublican": 0,
-    "VoteLeastindependent": 0,
+    "leastLoyalVotes": ascendingArray('votes_with_party_pct'),
 
     //Members most often do vote with their party//
-    "voteOftenDemocrat": 0,
-    "voteOftenRepublican": 0,
-    "voteOftenIndependent": 0,
-
-
+    "mostLoyalVotes": descendingArray('votes_with_party_pct'),
 }
 
 //Finding number of members in each party//
 
-function stateNumber() {
-    var democrat = [];
-    var republican = [];
-    var independent = [];
+function stateNumber(party) {
+    var parties = [];
 
     for (i = 0; i < membersArray.length; i++) {
-        if (membersArray[i].party == "D") {
-            democrat.push(membersArray[i]);
-        }
-        if (membersArray[i].party == "R") {
-            republican.push(membersArray[i]);
-
-        }
-        if (membersArray[i].party == "I") {
-            independent.push(membersArray[i]);
+        if (membersArray[i].party == party) {
+            parties.push(membersArray[i]);
         }
     }
-    statistics.numberDemocrat = democrat.length;
-    statistics.numberRepublican = republican.length;
-    statistics.numberIndependent = independent.length;
+    return parties.length;
 }
 stateNumber();
 
-//Average "Votes with Party" for each party//
+//Average "Votes with Party"//
 
-//Democrat//
-function democratVotes() {
+function averageVotes(party) {
     var Sum = 0;
-    var Length = statistics.numberDemocrat;
 
     for (i = 0; i < membersArray.length; i++) {
-        if (membersArray[i].party == "D") {
-            Sum = Sum + membersArray[i].votes_with_party_pct;
+        if (membersArray[i].party == party) {
+            Sum += membersArray[i].votes_with_party_pct;
         }
     }
-    var Average = Sum / Length;
-    statistics.averageDemocrat = Average;
+    return Sum;
 }
-democratVotes();
+averageVotes();
 
-//Republican//
-function republicanVotes() {
-    var Sum = 0;
-    var Length = statistics.numberRepublican;
+//Highest missed vote percentage / total vote percentage//
 
-    for (i = 0; i < membersArray.length; i++) {
-        if (membersArray[i].party == "R") {
-            Sum = Sum + membersArray[i].votes_with_party_pct;
-        }
-    }
-    var Average = Sum / Length;
-    statistics.averageRepublican = Average;
-}
-republicanVotes();
+function descendingArray(sortkey) {
 
-//Independent//
-function independentVotes() {
-    var Sum = 0;
-    var Length = statistics.numberIndependent;
+    membersArray.sort((a, b) => a.key - b.key);
 
-    for (i = 0; i < membersArray.length; i++) {
-        if (membersArray[i].party == "I") {
-            Sum = Sum + membersArray[i].votes_with_party_pct;
-        }
-    }
-    var Average = Sum / Length;
-    statistics.averageIndependent = Average;
-}
-independentVotes();
-
-//ATTENDANCE//
-
-//Engagement// 
-
-//Highest missed vote percentage//
-
-function leastVoters() {
-    membersArray.sort((a, b) => b.missed_votes_pct - a.missed_votes_pct);
-    var bottomTen = membersArray.length * 0.1;
-    var bottomTenLeastArray = [];
-    for (i = 0; i < membersArray.length; i++) {
-        if (i < bottomTen) {
-            bottomTenLeastArray.push(membersArray[i])
-        } else if (membersArray[i].missed_votes_pct == bottomTenLeastArray[bottomTenLeastArray.length - 1].missed_votes_pct) {
-            bottomTenLeastArray.push(membersArray[i]);
+    var empty = [];
+    for (var i = 0; i < membersArray.length; i++) {
+        if (i < (membersArray.length * 0.1)) {
+            empty.push(membersArray[i]);
+        } else if (membersArray[i - 1][sortkey] == membersArray[i][sortkey]) {
+            empty.push(membersArray[i]);
         } else {
             break;
         }
     }
-    console.log(bottomTenLeastArray);
-    return bottomTenLeastArray;
+    return empty;
 }
-leastVoters()
+descendingArray();
 
-//Lowest missed vote percentage//
 
-function mostVoters() {
-    membersArray.sort((a, b) => a.missed_votes_pct - b.missed_votes_pct);
-    var topTen = membersArray.length * 0.1;
-    var topTenLeastArray = [];
+//Lowest missed vote percentage / total vote percentage//
+
+function ascendingArray(key) {
+
+    membersArray.sort((a, b) => a.key - b.key);
+
+    var tenPercent = membersArray.length * 0.1;
+    var tenPercentArray = [];
+
     for (i = 0; i < membersArray.length; i++) {
-        if (i < topTen) {
-            topTenLeastArray.push(membersArray[i])
-        } else if (membersArray[i].missed_votes_pct == topTenLeastArray[topTenLeastArray.length - 1].missed_votes_pct) {
-            topTenLeastArray.push(membersArray[i]);
+        if (i < tenPercent) {
+            tenPercentArray.push(membersArray[i])
+        } else if (membersArray[i][key] == tenPercentArray[tenPercentArray.length - 1][key]) {
+            tenPercentArray.push(membersArray[i]);
         } else {
             break;
         }
     }
-    console.log(topTenLeastArray);
-    return topTenLeastArray;
+    return tenPercentArray;
 }
-mostVoters()
+ascendingArray()
+
+//Table to display Party Statistics//
+
+function partyTable() {
+
+    var table = document.getElementById('party-numbers');
+    var tbody = document.getElementById('tbodyParty');
+
+    //Democrat Row//
+    var trDemocrat = document.createElement('tr');
+
+    var democratParty = document.createElement('td');
+    democratParty.innerHTML = 'Democrat';
+
+    var democratNumber = document.createElement('td');
+    democratNumber.innerHTML = statistics['numberDemocrat'];
+
+    var democratAverage = document.createElement('td');
+    democratAverage.innerHTML = statistics.averageDemocrat;
 
 
-//PARTY LOYALTY//
+    //Republican Row//
+    var trRepublican = document.createElement('tr');
 
-//Least loyal members//
+    var republicanParty = document.createElement('td');
+    republicanParty.innerHTML = 'Republican';
 
-function leastLoyal() {
-    membersArray.sort((a, b) => a.votes_with_party_pct - b.votes_with_party_pct);
-    var bottomTen = membersArray.length * 0.1;
-    var bottomTenLeastArray = [];
-    for (i = 0; i < membersArray.length; i++) {
-        if (i < bottomTen) {
-            bottomTenLeastArray.push(membersArray[i])
-        } else if (membersArray[i].votes_with_party_pct == bottomTenLeastArray[bottomTenLeastArray.length - 1].votes_with_party_pct) {
-            bottomTenLeastArray.push(membersArray[i]);
+    var republicanNumber = document.createElement('td');
+    republicanNumber.innerHTML = statistics.numberRepublican;
+
+    var republicanAverage = document.createElement('td');
+    republicanAverage.innerHTML = statistics.averageRepublican;
+
+
+    //Independent Row//
+    var trIndependent = document.createElement('tr');
+
+    var independentParty = document.createElement('td');
+    independentParty.innerHTML = 'Independent';
+
+    var independentNumber = document.createElement('td');
+    independentNumber.innerHTML = statistics.numberIndependent;
+
+    var independentAverage = document.createElement('td');
+    independentAverage.innerHTML = statistics.averageIndependent;
+
+
+    trDemocrat.appendChild(democratParty);
+    trDemocrat.appendChild(democratNumber);
+    trDemocrat.appendChild(democratAverage);
+
+    trRepublican.appendChild(republicanParty);
+    trRepublican.appendChild(republicanNumber);
+    trRepublican.appendChild(republicanAverage);
+
+    trIndependent.appendChild(independentParty);
+    trIndependent.appendChild(independentNumber);
+    trIndependent.appendChild(independentAverage);
+
+
+    tbodyParty.appendChild(trDemocrat);
+    tbodyParty.appendChild(trRepublican);
+    tbodyParty.appendChild(trIndependent);
+
+}
+
+partyTable();
+
+//Table to display Least Engaged and Most Loyal//
+
+function descendingTable() {
+
+    var descending = statistics.mostMissedVotes;
+
+    var table = document.getElementById('descending-data');
+    var tbody = document.getElementById('tbodyDescending');
+
+    for (i = 0; i < descending.length; i++) {
+
+        var tr = document.createElement('tr');
+
+        var dataName = document.createElement('td');
+
+        if (descending[i].middle_name == null) {
+            dataName.innerHTML = (descending[i].first_name + " " + descending[i].last_name);
         } else {
-            break;
+            dataName.innerHTML = (descending[i].first_name + " " + descending[i].middle_name + " " + descending[i].last_name);
         }
-    }
-    console.log(bottomTenLeastArray);
-    return bottomTenLeastArray;
-}
-leastLoyal()
 
-//Most loyal members//
+        var dataNumber = document.createElement('td');
+        dataNumber.innerHTML = descending[i].missed_votes;
 
-function mostLoyal() {
-    membersArray.sort((a, b) => b.votes_with_party_pct - a.votes_with_party_pct);
-    var topTen = membersArray.length * 0.1;
-    var topTenLeastArray = [];
-    for (i = 0; i < membersArray.length; i++) {
-        if (i < topTen) {
-            topTenLeastArray.push(membersArray[i])
-        } else if (membersArray[i].votes_with_party_pct == topTenLeastArray[topTenLeastArray.length - 1].votes_with_party_pct) {
-            topTenLeastArray.push(membersArray[i]);
-        } else {
-            break;
-        }
+        var dataPct = document.createElement('td');
+        dataPct.innerHTML = descending[i].missed_votes_pct;
+
+        tr.appendChild(dataName);
+        tr.appendChild(dataNumber);
+        tr.appendChild(dataPct);
+        tbodyDescending.appendChild(tr);
     }
-    console.log(topTenLeastArray);
-    return topTenLeastArray;
+
 }
-mostLoyal()
+
+descendingTable();
+
+
+
+
+
+
+
+
+
+//Table to display Most Engaged and Least Loyal//
