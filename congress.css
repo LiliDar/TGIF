@@ -68,9 +68,9 @@ p {
     display: inline-block;
     position: relative;
     margin-left: 5.4%;
-    margin-top: 3%;
+    margin-top: 6%;
     padding-right: 42%;
-    padding-bottom: 2%;
+    padding-bottom: 10%;
 }
 
 form {
@@ -127,3 +127,40 @@ table {
     margin-left: 85%;
 }
 
+.party-table-A {
+    display: inline-block;
+    width: 40%;
+    float: right;
+    margin-top: -28%;
+    margin-right: 2%;
+}
+
+.party-table-L {
+    display: inline-block;
+    width: 40%;
+    float: right;
+    margin-top: -28%;
+    margin-right: 2%;
+}
+
+.big-tables {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.bottom-table {
+    width: 48%;
+}
+
+.top-table {
+    width: 48%;
+}
+
+.party-table {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-top: -30%;
+    margin-left: 60%;
+}

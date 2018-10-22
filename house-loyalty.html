@@ -57,137 +57,58 @@
             </div>
         </nav>
     </div>
-    <div class="senators-paragraph container">
+    <div class="loyalty-paragraph container">
         <h2>Party Loyalty</h2>
         <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
     </div>
     <div class="container">
-        <h2>Senate at a glance</h2>
-        <table>
-            <thead>
-                <tr>
+        <div class="party-table">
+            <h4>House at a glance</h4>
+            <table class="table table-striped">
+                <thead>
                     <th>Party</th>
                     <th>Number of Reps</th>
-                    <th>% Voted with Prty</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Republican</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>Democrat</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>Independent</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table>
+                    <th>% Voted with Party</th>
+                </thead>
+                <tbody id="tbodyParty"></tbody>
+            </table>
+        </div>
 
-        <h2>Least Loyal (Bottom 10% of Party)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Number Party Votes</th>
-                    <th>% Party Votes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="big-tables">
+            <div class="bottom-table">
+                <h4>Least Loyal (Bottom 10% of Party)</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Name</th>
+                        <th>Party Votes</th>
+                        <th>% Party Votes</th>
+                    </thead>
+                    <tbody id="loyalBottom"></tbody>
+                </table>
+            </div>
 
-        <h2>Most Loyal (Top 10% of Party)</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Number Party Votes</th>
-                    <th>% Party Votes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-                <tr>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>--</td>
-                </tr>
-            </tbody>
-        </table>
+            <div class="top-table">
+                <h4>Most Loyal (Top 10% of Party)</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Name</th>
+                        <th>Party Votes</th>
+                        <th>% Party Votes</th>
+                    </thead>
+                    <tbody id="loyalTop"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <footer class="navigation container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <p class="footer-note">@ 2016 TGIF | All Rights Reserved </p>
         </nav>
     </footer>
-    <script src="pro-congress-113-senate.js"></script>
-    <script src="congress-data.js"></script>
+    <!--<script src="pro-congress-113-house.js"></script>-->
+    
+    <script src="congress-statistics.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

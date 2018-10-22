@@ -1,31 +1,57 @@
 //Global Variables//
-var membersArray = data.results[0].members;
+
 var dropdown = document.getElementById('states');
 
 var democrat = document.getElementById('democrat');
-democrat.addEventListener('click', function () {
-    var arrayFilter = myFilter();
-    myTable(arrayFilter);
-});
 
 var republican = document.getElementById('republican');
-republican.addEventListener('click', function () {
-    var arrayFilter = myFilter();
-    myTable(arrayFilter);
-});
 
 var independent = document.getElementById('independent');
-independent.addEventListener('click', function () {
-    var arrayFilter = myFilter();
-    myTable(arrayFilter);
-});
 
+//Fetching data from server//
 
-dropdown.addEventListener('change', function () {
-    var arrayFilter = myFilter();
-    myTable(arrayFilter);
-});
+if (location.pathname == "/Users/lilidarvalics/Desktop/TGIF/senate-data.html") {
+    getCongressData("https://api.propublica.org/congress/v1/113/senate/members.json");
 
+} else if (location.pathname == "/Users/lilidarvalics/Desktop/TGIF/house-data.html") {
+    getCongressData("https://api.propublica.org/congress/v1/113/house/members.json");
+}
+
+function getCongressData(link) {
+    fetch(link, {
+            "method": "GET",
+            "headers": {
+                'X-API-Key': "7UGw37brAbAI6CFkEv0vrCECV5DcM04LcBp37ZqK"
+            }
+        })
+        .then(r => r.json())
+        .then(json => {
+            console.log(json);
+            data = json;
+            
+            membersArray = data.results[0].members;
+
+            duplicateStates()
+            myStates()
+
+            democrat.addEventListener('click', function () {
+                var arrayFilter = myFilter();
+                myTable(arrayFilter);
+            });
+            republican.addEventListener('click', function () {
+                var arrayFilter = myFilter();
+                myTable(arrayFilter);
+            });
+            independent.addEventListener('click', function () {
+                var arrayFilter = myFilter();
+                myTable(arrayFilter);
+            });
+            dropdown.addEventListener('change', function () {
+                var arrayFilter = myFilter();
+                myTable(arrayFilter);
+            });
+        })
+}
 
 //Creating a Table//
 function myTable(array) {
@@ -66,10 +92,11 @@ function myTable(array) {
     }
 }
 
-
 //Creating filter function//
 function myFilter() {
+    
     var empty = [];
+
     for (i = 0; i < membersArray.length; i++) {
         //Filter list of 50 states//
         if (dropdown.value == membersArray[i].state || dropdown.value == 'All') {
@@ -88,10 +115,11 @@ function myFilter() {
     return empty;
 }
 
-
 //Get rid of Duplicates//
 function duplicateStates() {
     var duplicates = [];
+    
+
     for (i = 0; i < membersArray.length; i++) {
         for (j = i + 1; j < membersArray.length; j++) {
             if (membersArray[i].state == membersArray[j].state && !duplicates.includes(membersArray[i].state)) {
@@ -101,7 +129,6 @@ function duplicateStates() {
     }
     return duplicates;
 }
-duplicateStates();
 
 //Append to Dropdown//
 function myStates() {
@@ -113,8 +140,3 @@ function myStates() {
         dropdown.appendChild(option);
     }
 }
-myStates();
-
-
-
-

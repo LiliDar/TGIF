@@ -64,44 +64,53 @@
         <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
     </div>
     <div class="container">
-        <h2>Senate at a glance</h2>
-        <table id="party-numbers">
-            <thead>
-                <th>Party</th>
-                <th>Number of Reps</th>
-                <th>% Voted with Party</th>
-            </thead>
-            <tbody id="tbodyParty"></tbody>
-        </table>
+        <div class="party-table">
+            <h4>Senate at a glance</h4>
+            <table class="table table-striped">
+                <thead>
+                    <th scope="col-lg-1">Party</th>
+                    <th scope="col-lg-1">Number of Reps</th>
+                    <th scope="col-lg-1">% Voted with Party</th>
+                </thead>
+                <tbody id="tbodyParty"></tbody>
+            </table>
+        </div>
 
-        <h2>Least Engaged (Bottom 10% Attendance)</h2>
-        <table id="descending-data">
-            <thead>
-                <th>Name</th>
-                <th>Number of Missed Votes</th>
-                <th>% Missed</th>
-            </thead>
-            <tbody id="tbodyDescending"></tbody>
-        </table>
+        <div class="big-tables">
+            <div class="bottom-table">
+                <h4>Least Engaged (Bottom 10% Attendance)</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Name</th>
+                        <th>Missed Votes</th>
+                        <th>% Missed</th>
+                    </thead>
+                    <tbody id="votesBottom"></tbody>
+                </table>
+            </div>
 
-        <h2>Most Engaged (Top 10% Attendance)</h2>
-        <table id="ascending-data">
-            <thead>
-                <th>Name</th>
-                <th>Number of Missed Votes</th>
-                <th>% Missed</th>
-            </thead>
-            <tbody id="tbodyAscending"></tbody>
-        </table>
+            <div class="top-table">
+                <h4>Most Engaged (Top 10% Attendance)</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Name</th>
+                        <th>Missed Votes</th>
+                        <th>% Missed</th>
+                    </thead>
+                    <tbody id="votesTop"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <footer class="navigation container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <p class="footer-note">@ 2016 TGIF | All Rights Reserved </p>
         </nav>
     </footer>
-    <script src="pro-congress-113-senate.js"></script>
-    <!--<script src="congress-data.js"></script>-->
+    <!--<script src="pro-congress-113-senate.js"></script>-->
+    
     <script src="congress-statistics.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
