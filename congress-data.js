@@ -55,8 +55,8 @@ function getCongressData(link) {
 
 //Creating a Table//
 function myTable(array) {
-    var table = document.getElementById('senate-data');
-    var tbody = document.getElementById('tbody');
+    
+    var tbody = document.getElementById('members');
     tbody.innerHTML = "";
 
     for (i = 0; i < array.length; i++) {

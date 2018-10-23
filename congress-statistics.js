@@ -27,7 +27,7 @@ function getStatisticsData(link) {
                 "numberDemocrat": stateNumber('D'),
                 "numberRepublican": stateNumber('R'),
                 "numberIndependent": stateNumber('I'),
-                "Total": stateNumber('D') + stateNumber('R') + stateNumber('I'),
+                "total": stateNumber('D') + stateNumber('R') + stateNumber('I'),
 
                 // Democrats and Republicans compare, on average, for voting with their party//
                 "averageDemocrat": Math.round(averageVotes('D') / stateNumber('D')) + '%',
@@ -52,14 +52,14 @@ function getStatisticsData(link) {
             }
             partyTable();
 
-            if (location.pathname == "/Users/lilidarvalics/Desktop/TGIF/senate-loyalty.html" || location.pathname == "/Users/lilidarvalics/Desktop/TGIF/house-loyalty.html") {
+            if (location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/senate-attendance.html" || location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/house-attendance.html") {
 
                 dataTable(statistics['leastLoyalVotes'], 'loyalBottom', 'total_votes', 'votes_with_party_pct')
 
                 dataTable(statistics['mostLoyalVotes'], 'loyalTop', 'total_votes', 'votes_with_party_pct')
             }
 
-            if (location.pathname == "/Users/lilidarvalics/Desktop/TGIF/senate-attendance.html" || location.pathname == "/Users/lilidarvalics/Desktop/TGIF/house-attendance.html") {
+            if (location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/senate-loyalty.html" || location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/house-loyalty.html") {
 
                 dataTable(statistics['mostMissedVotes'], 'votesBottom', 'missed_votes', 'missed_votes_pct');
 
@@ -257,8 +257,3 @@ function dataTable(array, id, votes, percent) {
         tbody.appendChild(tr);
     }
 }
-
-
-
-
-
