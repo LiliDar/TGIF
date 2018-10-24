@@ -1,5 +1,3 @@
-//Global Variables//
-
 var dropdown = document.getElementById('states');
 
 var democrat = document.getElementById('democrat');
@@ -8,7 +6,6 @@ var republican = document.getElementById('republican');
 
 var independent = document.getElementById('independent');
 
-//Fetching data from server//
 
 if (location.pathname == "/Users/lilidarvalics/Desktop/TGIF/senate-data.html") {
     getCongressData("https://api.propublica.org/congress/v1/113/senate/members.json");
@@ -53,7 +50,6 @@ function getCongressData(link) {
         })
 }
 
-//Creating a Table//
 function myTable(array) {
     
     var tbody = document.getElementById('members');
@@ -92,7 +88,6 @@ function myTable(array) {
     }
 }
 
-//Creating filter function//
 function myFilter() {
     
     var empty = [];
@@ -115,7 +110,6 @@ function myFilter() {
     return empty;
 }
 
-//Get rid of Duplicates//
 function duplicateStates() {
     var duplicates = [];
     
@@ -130,7 +124,6 @@ function duplicateStates() {
     return duplicates;
 }
 
-//Append to Dropdown//
 function myStates() {
     var array = duplicateStates();
 

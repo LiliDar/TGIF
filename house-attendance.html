@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Fjalla+One" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="congress.css">
 </head>
 
 <body class="background">
     <div id="main">
-        <div class="container page-header">
-            <img class="img-branches" alt="tgif-logo" src="branches-of-government.png">
-            <h1 class="text-center">Transparent Government in Fact</h1>
-            <!--<div class="container-fluid">
-            <p>https://www.whitehouse.gov/the_press_office/TransparencyandOpenGovernment</p>
-        </div>-->
+        <div class="container-fluid page-header jumbotron">
+            <div class="title">
+                <h1>Transparent Government in Fact</h1>
+            </div>
+            <img class="img-parliament" alt="tgif-logo" src="clipart-of-the-white-house-8.png">
         </div>
         <div class="navigation container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,7 +38,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Attendance
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -55,96 +55,109 @@
                                 <a class="dropdown-item" href="house-loyalty.html">House</a>
                             </div>
                     </ul>
+                    <a class="nav-link email-button" href="mailto:info@tgif.net">info@tgif.net
+                    </a>
                 </div>
             </nav>
         </div>
-        <div class="senators-paragraph container">
-            <h2>Attendance</h2>
-            <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+        <div id="loader"></div>
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+            <div class="attendance-paragraph container">
+                <h2>Attendance</h2>
+                <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
 
-            <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
-        </div>
-        <div class="container">
-            <div class="party-table">
-                <h4>House at a glance</h4>
-                <table class="table table-striped">
-                    <thead>
-                        <th scope="col-lg-1">Party</th>
-                        <th scope="col-lg-1">Number of Reps</th>
-                        <th scope="col-lg-1">% Voted with Party</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Democrat</td>
-                            <td>{{statistics.numberDemocrat}}</td>
-                            <td>{{statistics.averageDemocrat}}</td>
-                        </tr>
-                        <tr>
-                            <td>Republican</td>
-                            <td>{{statistics.numberRepublican}}</td>
-                            <td>{{statistics.averageRepublican}}</td>
-                        </tr>
-                        <tr>
-                            <td>Independent</td>
-                            <td>{{statistics.numberIndependent}}</td>
-                            <td>{{statistics.averageIndependent}}</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>{{statistics.total}}</td>
-                            <td>{{statistics.totalAverage}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
             </div>
-
-            <div class="big-tables">
-                <div class="bottom-table">
-                    <h4>Least Engaged (Bottom 10% Attendance)</h4>
+            <div class="container">
+                <div class="party-table">
+                    <h4>House at a glance</h4>
                     <table class="table table-striped">
-                        <thead>
-                            <th>Name</th>
-                            <th>Missed Votes</th>
-                            <th>% Missed</th>
+                        <thead class="jumbotron">
+                            <th scope="col-lg-1">Party</th>
+                            <th scope="col-lg-1">Number of Reps</th>
+                            <th scope="col-lg-1">% Voted with Party</th>
                         </thead>
                         <tbody>
-                            <tr v-for="member in statistics.mostMissedVotes">
-                                <td>{{member.first_name}} <span v-if="member.middle_name != null">{{member.middle_name}}</span> {{member.last_name}}</td>
-                                <td>{{member.missed_votes}}</td>
-                                <td>{{member.missed_votes_pct + '%'}}</td>
+                            <tr>
+                                <td>Democrat</td>
+                                <td>{{statistics.numberDemocrat}}</td>
+                                <td>{{statistics.averageDemocrat}}</td>
+                            </tr>
+                            <tr>
+                                <td>Republican</td>
+                                <td>{{statistics.numberRepublican}}</td>
+                                <td>{{statistics.averageRepublican}}</td>
+                            </tr>
+                            <tr>
+                                <td>Independent</td>
+                                <td>{{statistics.numberIndependent}}</td>
+                                <td><span v-if="statistics.totalAverage != 'NaN%'">{{'0%'}}</span>
+                                    <span v-else>{{statistics.averageIndependent}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>{{statistics.total}}</td>
+                                <td>{{statistics.totalAverage}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div class="top-table">
-                    <h4>Most Engaged (Top 10% Attendance)</h4>
-                    <table class="table table-striped">
-                        <thead>
-                            <th>Name</th>
-                            <th>Missed Votes</th>
-                            <th>% Missed</th>
-                        </thead>
-                        <tbody>
-                            <tr v-for="member in statistics.leastMissedVotes">
-                                <td>{{member.first_name}} <span v-if="member.middle_name != null">{{member.middle_name}}</span> {{member.last_name}}</td>
-                                <td>{{member.missed_votes}}</td>
-                                <td>{{member.missed_votes_pct + '%'}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="big-tables">
+                    <div class="bottom-table">
+                        <h4>Least Engaged (Bottom 10% Attendance)</h4>
+                        <table class="table table-striped">
+                            <thead class="jumbotron">
+                                <th>Name</th>
+                                <th>Missed Votes</th>
+                                <th>% Missed</th>
+                            </thead>
+                            <tbody>
+                                <tr v-for="member in statistics.mostMissedVotes">
+                                    <td>
+                                        <a :href="member.url">
+                                            {{member.first_name}} <span v-if="member.middle_name != null">{{member.middle_name}}</span> {{member.last_name}}
+                                        </a>
+                                    </td>
+                                    <td>{{member.missed_votes}}</td>
+                                    <td>{{member.missed_votes_pct + '%'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="top-table">
+                        <h4>Most Engaged (Top 10% Attendance)</h4>
+                        <table class="table table-striped">
+                            <thead class="jumbotron">
+                                <th>Name</th>
+                                <th>Missed Votes</th>
+                                <th>% Missed</th>
+                            </thead>
+                            <tbody>
+                                <tr v-for="member in statistics.leastMissedVotes">
+                                    <td>
+                                        <a :href="member.url">
+                                            {{member.first_name}} <span v-if="member.middle_name != null">{{member.middle_name}}</span> {{member.last_name}}
+                                        </a>
+                                    </td>
+                                    <td>{{member.missed_votes}}</td>
+                                    <td>{{member.missed_votes_pct + '%'}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <div class="container to-top-button">
+                <a class="text-muted" href="house-attendance.html">Back to top</a>
+            </div>
+            <footer class="container footer">
+                <a class="bg-light footer-text" href="https://www.whitehouse.gov/the_press_office/TransparencyandOpenGovernment">@ 2016 TGIF | All Rights Reserved </a>
+            </footer>
         </div>
-        <footer class="navigation container">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <p class="footer-note">@ 2016 TGIF | All Rights Reserved </p>
-            </nav>
-        </footer>
     </div>
-    <!--<script src="pro-congress-113-house.js"></script>-->
-    <!--<script src="congress-statistics.js"></script>-->
-
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="statistics-vue.js"></script>
 

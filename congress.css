@@ -1,102 +1,50 @@
 .background {
     background-color: gainsboro;
     width: 100%;
-    height: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 0;
 }
 
-.img-branches {
-    width: 20%;
-    position: relative;
-    float: left;
+.page-header {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+}
+
+.jumbotron {
+    background-color: slategrey;
+    height: 300px;
+    margin-bottom: -4.3%;
+}
+
+.title {
+    align-self: center;
+    margin-top: -7%;
+    width: 50%;
+    margin-bottom: 9%;;
+}
+
+.img-parliament {
+    width: 50%;
+    height: 380px;
+    margin-top: -17%;
+    align-self: center;
 }
 
 h1 {
     float: left;
     margin-top: 8%;
     margin-left: 4%;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Crimson Text', serif;
 }
 
-h2 {
-    font-family: 'Nanum Gothic', sans-serif;
+h2, h3, p, .filter-button, .drpdwn-button {
+    font-family: 'Crimson Text', serif;
 }
 
-h3 {
-    font-family: 'Nanum Gothic', sans-serif;
-}
-
-p {
-    font-family: 'Didact Gothic', sans-serif;
-}
-
-.home-paragraph {
-    display: inline-block;
-    position: relative;
-    margin-left: 5.4%;
-    margin-top: 3%;
-    padding-right: 42%;
-}
-
-.senators-paragraph {
-    display: inline-block;
-    position: relative;
-    margin-left: 5.4%;
-    margin-top: 3%;
-    padding-right: 42%;
-    padding-bottom: 2%;
-}
-
-.congressmen-paragraph {
-    display: inline-block;
-    position: relative;
-    margin-left: 5.4%;
-    margin-top: 3%;
-    padding-right: 42%;
-    padding-bottom: 2%;
-}
-
-.attendance-paragraph {
-    display: inline-block;
-    position: relative;
-    margin-left: 5.4%;
-    margin-top: 3%;
-    padding-right: 42%;
-    padding-bottom: 2%;
-}
-
-.loyalty-paragraph {
-    display: inline-block;
-    position: relative;
-    margin-left: 5.4%;
-    margin-top: 6%;
-    padding-right: 42%;
-    padding-bottom: 10%;
-}
-
-form {
-    font-family: 'Didact Gothic', sans-serif;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: -2.7%
-    
-}
-
-.footer-note {
-    margin-top: 1.2%;
-    color: grey;
-}
-
-.jumbotron {
-    background-color: slategrey;
-}
-
-table {
-    font-family: 'Nanum Gothic', sans-serif;
-}
-
-.drpdwn-button {
-    font-family: 'Didact Gothic', sans-serif;
+h4, #accordion {
+    font-family: 'Fjalla One', sans-serif;
 }
 
 .navigation {
@@ -104,114 +52,245 @@ table {
     width: 90%;
     margin-left: 5%;
     margin-top: 2%;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Fjalla One', sans-serif;
+    background-color: whitesmoke;
+    text-transform: uppercase;
+    font-size: 11pt;
+}
+
+.email-button {
+    color: gray
 }
 
 .homepage-img {
     width: 30%;
     display: inline-block;
     position: absolute;
-    margin-top: 20%;
-    margin-left: -35%
+    margin-top: 13.5%;
+    margin-left: -32%
 }
 
-#accordion {
-    font-family: 'Didact Gothic', sans-serif;
+.loyalty-img {
+    width: 50%;
+    height: 150px;
+    align-self: center;
+    margin-top: -%;
+    margin-bottom: 20%;
 }
 
-.second-paragraph {
+.senate-logo, .house-logo {
+    width: 38%;
+    height: 230px;
+    margin-right: -78%;
+    margin-left: 6%;
+}
+
+.home-paragraph {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    margin-left: 6%;
+    padding-right: 40%;
+}
+
+.senators-paragraph, .congressmen-paragraph {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2%;
+    padding-right: 40%;
+}
+
+.attendance-paragraph {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    margin-left: ;
+    padding-right: 40.5%;
+}
+
+.loyalty-paragraph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2%;
+    padding-right: 40%;
+}
+
+.accordion-second-paragraph {
     margin-left: -4%;
 }
 
-.drpdwn-button {
-    margin-left: 85%;
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+    display: none;
 }
 
-.party-table-A {
-    display: inline-block;
-    width: 40%;
-    float: right;
-    margin-top: -28%;
-    margin-right: 2%;
+table {
+    font-family: 'Crimson Text', serif;
+    font-size: 13pt;
 }
 
-.party-table-L {
-    display: inline-block;
-    width: 40%;
-    float: right;
-    margin-top: -28%;
-    margin-right: 2%;
-}
-
-.big-tables {
+.selectors {
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+
 }
 
-.bottom-table {
-    width: 48%;
+form {
+    font-family: 'Didact Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: -2.7%;
 }
 
-.top-table {
-    width: 48%;
+.checkbox {
+    align-self: flex-start;
+    flex: 0.98;
+}
+
+#democrat {
+    margin-left: 0.5%;
+}
+
+#republican {
+    margin-left: 1.5%;
+}
+
+#independent {
+    margin-left: 1.4%;
+}
+
+.alert-text {
+    color: red;
+    margin-left: 15.5%;
+    text-transform: uppercase;
+}
+
+.alert-text-independent {
+    color: red;
+    text-transform: uppercase;
 }
 
 .party-table {
     display: flex;
     flex-direction: column;
     width: 40%;
-    margin-top: -30%;
+    margin-top: -26%;
     margin-left: 60%;
 }
 
+.party-table-loyalty {
+    width: 40%;
+    margin-left: 60%;
+    margin-top: -38%;
+}
+
+.big-tables {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2.5%;
+}
+
+.bottom-table, .top-table {
+    width: 48%;
+}
+
+.to-top-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.5%;
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: whitesmoke;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 87%;
+    height: 40px;
+    color: grey;
+}
+
+.footer-text{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 11pt;
+    color: black;
+    align-self: center
+}
+
 #loader {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 76.5%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid grey;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-/* Add animation to "page content" */
 .animate-bottom {
-  position: relative;
-  -webkit-animation-name: animatebottom;
-  -webkit-animation-duration: 1s;
-  animation-name: animatebottom;
-  animation-duration: 1s
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
-  to { bottom:0px; opacity:1 }
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
 }
 
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
-  to{ bottom:0; opacity:1 }
-}
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
 
-#myDiv {
-  display: none;
-  text-align: center;
+    to {
+        bottom: 0;
+        opacity: 1
+    }
 }

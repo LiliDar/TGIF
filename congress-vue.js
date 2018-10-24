@@ -8,11 +8,14 @@ var app = new Vue({
         states: [],
         senate: "https://api.propublica.org/congress/v1/113/senate/members.json",
         house: "https://api.propublica.org/congress/v1/113/house/members.json",
+        checked: true,
+        show: true,
+        showIndependent: true,
     },
 
-    created: function() {
+    created: function () {
 
-         if (location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/senate-data.html") {
+        if (location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/senate-data.html") {
             this.getCongressData(this.senate);
 
         } else if (location.pathname == "/Users/lilidarvalics/Documents/Ubiqum%20exercises/TGIF/house-data.html") {
@@ -34,13 +37,19 @@ var app = new Vue({
                     console.log(json);
                     data = json;
 
+                    app.showPage();
                     app.membersArray = json.results[0].members;
                     app.allMembers = json.results[0].members;
-                    app.duplicateStates()
+                    app.duplicateStates();
+                    app.alertMessage();
+                    app.noIndependentMessage();
                 })
         },
 
         myFilter() {
+
+            app.alertMessage();
+            app.noIndependentMessage();
 
             var empty = [];
 
@@ -86,5 +95,33 @@ var app = new Vue({
             }
             app.states = duplicates.sort();
         },
-    },
+
+        showPage: function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        },
+
+        alertMessage: function () {
+            
+            if (democrat.checked == false && republican.checked == false && independent.checked == false) {
+                app.checked = true;
+            } else {
+                app.checked = false;
+            }
+        },
+
+        noIndependentMessage: function () {
+            
+            if (democrat.checked == false && republican.checked == false && independent.checked == true) {
+                app.showIndependent = true;
+                app.show = false;
+            } else if (democrat.checked == false && republican.checked == false && independent.checked == false) {
+                app.show = false;
+                app.showIndependent = false;
+            } else {
+                app.showIndependent = false;
+                app.show = true;
+            }
+        },
+    }
 })

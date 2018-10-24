@@ -1,5 +1,3 @@
-//Fetching data from server//
-
 if (location.pathname == "/Users/lilidarvalics/Desktop/TGIF/senate-attendance.html" || location.pathname == "/Users/lilidarvalics/Desktop/TGIF/senate-loyalty.html") {
     getStatisticsData("https://api.propublica.org/congress/v1/113/senate/members.json");
 
@@ -23,31 +21,22 @@ function getStatisticsData(link) {
 
             statistics = {
 
-                //Number of Democrats, Republicans and Independents//
                 "numberDemocrat": stateNumber('D'),
                 "numberRepublican": stateNumber('R'),
                 "numberIndependent": stateNumber('I'),
                 "total": stateNumber('D') + stateNumber('R') + stateNumber('I'),
 
-                // Democrats and Republicans compare, on average, for voting with their party//
                 "averageDemocrat": Math.round(averageVotes('D') / stateNumber('D')) + '%',
                 "averageRepublican": Math.round(averageVotes('R') / stateNumber('R')) + '%',
                 "averageIndependent": Math.round(averageVotes('I') / stateNumber('I')) + '%',
                 "totalAverage": Math.round((averageVotes('D') + averageVotes('R') + averageVotes('I')) / membersArray.length) + '%',
 
-                //Members which missed the most votes//
                 "mostMissedVotes": descendingArray('missed_votes_pct'),
 
-
-                //Members which missed the least votes//
                 "leastMissedVotes": ascendingArray('missed_votes_pct'),
 
-
-                //Members most often do not vote with their party//
                 "leastLoyalVotes": ascendingArray('votes_with_party_pct'),
 
-
-                //Members most often do vote with their party//
                 "mostLoyalVotes": descendingArray('votes_with_party_pct'),
             }
             partyTable();
@@ -68,8 +57,6 @@ function getStatisticsData(link) {
         })
 }
 
-//Finding number of members in each party//
-
 function stateNumber(party) {
 
     var parties = [];
@@ -82,8 +69,6 @@ function stateNumber(party) {
     return parties.length;
 }
 
-//Average "Votes with Party"//
-
 function averageVotes(party) {
 
     var Sum = 0;
@@ -95,8 +80,6 @@ function averageVotes(party) {
     }
     return Sum;
 }
-
-//Highest missed vote percentage / total vote percentage//
 
 function descendingArray(key) {
 
@@ -119,8 +102,6 @@ function descendingArray(key) {
     return descendingTen;
 }
 
-//Lowest missed vote percentage / total vote percentage//
-
 function ascendingArray(key) {
 
     membersArray.sort((a, b) => a[key] - b[key]);
@@ -142,13 +123,10 @@ function ascendingArray(key) {
     return ascendingTen;
 }
 
-//Table to display Party Statistics//
-
 function partyTable() {
 
     var tbody = document.getElementById('tbodyParty');
 
-    //Democrat Row//
     var trDemocrat = document.createElement('tr');
 
     var democratParty = document.createElement('td');
@@ -160,7 +138,6 @@ function partyTable() {
     var democratAverage = document.createElement('td');
     democratAverage.innerHTML = statistics.averageDemocrat;
 
-    //Republican Row//
     var trRepublican = document.createElement('tr');
 
     var republicanParty = document.createElement('td');
@@ -172,7 +149,6 @@ function partyTable() {
     var republicanAverage = document.createElement('td');
     republicanAverage.innerHTML = statistics.averageRepublican;
 
-    //Independent Row//
     var trIndependent = document.createElement('tr');
 
     var independentParty = document.createElement('td');
@@ -188,7 +164,6 @@ function partyTable() {
         independentAverage.innerHTML = statistics.averageIndependent;
     }
 
-    //Total//
     var trTotal = document.createElement('tr');
 
     var total = document.createElement('td');
@@ -223,8 +198,6 @@ function partyTable() {
     tbodyParty.appendChild(trTotal);
 
 }
-
-//Table to display Least Engaged and Most Loyal//
 
 function dataTable(array, id, votes, percent) {
 

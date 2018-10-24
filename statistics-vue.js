@@ -36,11 +36,10 @@ var app = new Vue({
                     console.log(json);
                     data = json;
 
+                    app.showPage();
                     app.membersArray = json.results[0].members;
                     app.allMembers = json.results[0].members;
                     app.fillStatistics();
-
-
                 })
         },
         fillStatistics() {
@@ -128,8 +127,10 @@ var app = new Vue({
             }
             return ascendingTen;
         },
+
+        showPage: function () {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        },
     }
 })
-
-
-
