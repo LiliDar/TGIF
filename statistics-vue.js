@@ -4,7 +4,6 @@ var app = new Vue({
 
     data: {
         membersArray: [],
-        allMembers: [],
         statistics: [],
         senate: "https://api.propublica.org/congress/v1/113/senate/members.json",
         house: "https://api.propublica.org/congress/v1/113/house/members.json",
@@ -38,7 +37,6 @@ var app = new Vue({
 
                     app.showPage();
                     app.membersArray = json.results[0].members;
-                    app.allMembers = json.results[0].members;
                     app.fillStatistics();
                 })
         },
@@ -71,7 +69,6 @@ var app = new Vue({
             return parties.length;
         },
 
-
         averageVotes(party) {
 
             var sum = 0;
@@ -83,7 +80,6 @@ var app = new Vue({
             }
             return sum;
         },
-
 
         descendingArray(key) {
 
@@ -105,7 +101,6 @@ var app = new Vue({
             }
             return descendingTen;
         },
-
 
         ascendingArray(key) {
 
